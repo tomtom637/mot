@@ -47,18 +47,16 @@ export default class GameGrid {
         let columnStart = ~~(Math.random() * maxDistanceFromEnd);
         while(!this.checkAvailable('horizontal', row, columnStart, words[i])) {
           ++counter;
-          if(counter > 100) {
+          if(counter > 200) {
             counter = 0;
             document.querySelectorAll('.cell').forEach(c => c.innerHTML = '');
             this.placeWords();
           }
           row = ~~(Math.random() * size);
           columnStart = ~~(Math.random() * maxDistanceFromEnd);
-          this.checkAvailable('horizontal', row, columnStart, words[i]);
         }
         for(let j = 0; j < words[i].length; ++j) {
           const currentCell = document.querySelector(`[data-row="${row}"][data-column="${columnStart + j}"]`);
-          if(currentCell.innerText !== '' && currentCell.innerText !== words[i][j]) return;
           if(currentCell.innerText !== words[i][j]) {
             const char = document.createElement('SPAN');
             char.classList = 'char';
@@ -71,18 +69,16 @@ export default class GameGrid {
         let column = ~~(Math.random() * size);
         while(!this.checkAvailable('vertical', rowStart, column, words[i])) {
           ++counter;
-          if(counter > 100) {
+          if(counter > 200) {
             counter = 0;
             document.querySelectorAll('.cell').forEach(c => c.innerHTML = '');
             this.placeWords();
           }
           rowStart = ~~(Math.random() * maxDistanceFromEnd);
           column = ~~(Math.random() * size);
-          this.checkAvailable('vertical', rowStart, column, words[i]);
         }
         for(let j = 0; j < words[i].length; ++j) {
           const currentCell = document.querySelector(`[data-row="${rowStart + j}"][data-column="${column}"]`);
-          if(currentCell.innerText !== '' && currentCell.innerText !== words[i][j]) return;
           if(currentCell.innerText !== words[i][j]) {
             const char = document.createElement('SPAN');
             char.classList = 'char';
