@@ -21,6 +21,7 @@ html, body {
 }
 
 #app {
+  position: relative;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
@@ -47,7 +48,7 @@ html, body {
   }
 
   to {
-    background: rgba(255, 0, 128, 0.06);
+    background: rgba(255, 0, 128, 0.01);
     box-shadow: 0 0 500px rgba(255, 0, 128, 0.16);
   }
 }
@@ -97,4 +98,14 @@ html, body {
   color: #C90065;
   transform-origin: center;
   animation: checklist 1s ease-in-out;
+}
+
+canvas {
+  position: absolute;
+  /* background: #ee82ee4f; */
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
 }
