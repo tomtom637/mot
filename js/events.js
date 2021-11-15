@@ -1,39 +1,11 @@
 import states from './states.js';
-import { shuffleArray } from './helper-functions.js';
-import GameGrid from './GameGrid.js';
+import { myList, listElement, canvas, ctx, liveCtx } from './initialize-game.js';
 
-const myList = ['école', 'rentrée', 'manège', 'alice', 'cahier', 'poulet', 'oiseau', 'chemin'];
-
-// initialize game
-const gameGrid = new GameGrid({
-  size: 10,
-  words: myList
-});
-
-// build the list
-const listElement = document.createElement('ul');
-listElement.classList = 'list';
-shuffleArray(gameGrid.words).forEach(word => {
-  const item = document.createElement('li');
-  item.innerText = word;
-  listElement.append(item);
-});
-
-document.getElementById('wrapper').append(listElement);
-
-const canvas = document.querySelector("#canvas");
-const liveCanvas = document.querySelector('#live-canvas');
-const ctx = canvas.getContext("2d");
-const liveCtx = liveCanvas.getContext("2d");
-canvas.width = parseInt(getComputedStyle(canvas).width);
-canvas.height = parseInt(getComputedStyle(canvas).height);
-liveCanvas.width = parseInt(getComputedStyle(liveCanvas).width);
-liveCanvas.height = parseInt(getComputedStyle(canvas).height);
+// saves the coordinates of the firt cell touched
 let initialtouchPoint = {x: null, y: null};
 
 // add the event listeners
 const app = document.getElementById('app');
-
 app.addEventListener('mousedown', handleMousedown);
 app.addEventListener('mousemove', handleMousemove);
 app.addEventListener('mouseup', handleMouseup);
@@ -55,10 +27,6 @@ export function handleMousedown(e) {
   }
   initialtouchPoint.x = x;
   initialtouchPoint.y = y;
-  liveCtx.fillStyle = 'rgba(0, 70, 200, 0.4)';
-  liveCtx.beginPath();
-  liveCtx.arc(x, y, 5, 0, 2 * Math.PI);
-  liveCtx.fill();
 
   ctx.strokeStyle = 'rgba(0, 70, 200, 0.4)';
   ctx.lineWidth = 15;
@@ -143,7 +111,6 @@ export function handleMousemove(e) {
 export function handleMouseup(e) {
   const start = states.answerCoordinates[0];
   const end = states.answerCoordinates[states.answerCoordinates.length - 1];
-
   if(start.row === end.row && start.column === end.column) {
     states.selecting = true;
     document

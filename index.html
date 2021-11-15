@@ -8,13 +8,23 @@
   <link rel="stylesheet" href="main.css">
 </head>
 <body>
-  <div id="wrapper" class="wrapper">
-    <div id="app">
-      <canvas id="canvas"></canvas>
-      <canvas id="live-canvas"></canvas>
+  <div class="wrapper">
+    <div class="modal">
+      <!-- build the modal menu here -->
     </div>
+    <div id="menu" class="menu">
+      <div class="line top-line"></div>
+      <div class="line middle-line"></div>
+      <div class="line bottom-line"></div>
+    </div>
+    <div id="container" class="container">
+      <div id="app">
+        <canvas id="canvas"></canvas>
+        <canvas id="live-canvas"></canvas>
+      </div>
+    </div>
+    <div class="debug"></div>
   </div>
-  <div class="debug"></div>
   <script type="module" src="app.js"></script>
 </body>
 </html>
