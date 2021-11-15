@@ -84,12 +84,12 @@ export function handleMousemove(e) {
         alreadyPickedCell = true;
       }
     }
-    if(!alreadyPickedCell) {   
+    // if(!alreadyPickedCell) {   
       states.answerCoordinates.push({
         row: cell.dataset.row,
         column: cell.dataset.column
       });
-    }
+    //}
   }
   const bounding = canvas.getBoundingClientRect();
   let x;
