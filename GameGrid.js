@@ -23,7 +23,7 @@ export default class GameGrid {
           const cellText = this.cells
             .filter(c => c.row === row && c.column === column + i)[0]
             .char;
-          if (cellText !== null && cellText == word[i]) {
+          if (cellText !== null && cellText !== word[i]) {
             return false;
           }
         }
