@@ -1,7 +1,19 @@
 import GameGrid from "./GameGrid.js";
 import { shuffleArray } from './helper-functions.js';
+import { words } from './words.js';
 
-export const myList = ['école', 'rentrée', 'manège', 'alice', 'cahier', 'poulet', 'oiseau', 'chemin'];
+export let myList = [];
+//myList.length = 8;
+
+for(let word of words) {
+  if(word.length <= 10) {
+    myList.push(word);
+  }
+  if(myList.length >= 8) {
+    break;
+  }
+}
+
 
 // initialize gameGrid
 export const gameGrid = new GameGrid({

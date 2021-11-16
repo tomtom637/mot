@@ -1,4 +1,4 @@
-[
+export const words = [
   "bleu",
   "super",
   "autre",
@@ -599,4 +599,4 @@
   "voir",
   "voler",
   "vouloir"
-]
+];
