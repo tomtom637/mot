@@ -28,6 +28,7 @@ html, body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  display: none;
 }
 .line {
   background: rgba(255, 255, 255, 0.4);
@@ -54,6 +55,8 @@ html, body {
   outline: 2px solid rgba(255, 0, 128, 0.05);
   animation: neon 4s cubic-bezier(0.42, 0, 0.53, 1.85) infinite alternate;
 }
+
+
 
 @keyframes neon {
   from {
@@ -105,7 +108,7 @@ html, body {
 }
 
 .li-found {
-  color: #C90065;
+  color: #ff2893;
   transform-origin: center;
   animation: checklist 1s ease-in-out;
 }

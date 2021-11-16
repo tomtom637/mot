@@ -142,7 +142,7 @@ export function handleMouseup(e) {
     }
   }
   if(myList.indexOf(states.answer) !== -1) {
-    states.cells.forEach(c => c.style.color = '#C90065');
+    states.cells.forEach(c => c.style.color = '#ff2893');
     listElement.querySelectorAll('li').forEach(li => {
       if(li.innerText === states.answer) {
         li.classList.add('li-found');
