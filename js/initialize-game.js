@@ -5,7 +5,7 @@ import { words } from './words.js';
 export let myList = [];
 //myList.length = 8;
 
-for(let word of words) {
+for(let word of shuffleArray(words)) {
   if(word.length <= 10) {
     myList.push(word);
   }
