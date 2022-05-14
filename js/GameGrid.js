@@ -21,7 +21,7 @@ export default class GameGrid {
       case 'horizontal':
         for (let i = 0; i < word.length; i++) {
           const cellText = this.cells
-            .filter(c => c.row === row && c.column === column + i)[0]
+            .find(c => c.row === row && c.column === column + i)
             .char;
           if (cellText !== null && cellText !== word[i]) {
             return false;
@@ -31,7 +31,7 @@ export default class GameGrid {
       case 'vertical':
         for (let i = 0; i < word.length; i++) {
           const cellText = this.cells
-            .filter(c => c.row === row + i && c.column === column)[0]
+            .find(c => c.row === row + i && c.column === column)
             .char;
           if (cellText !== null && cellText !== word[i]) {
             return false;
@@ -43,7 +43,7 @@ export default class GameGrid {
   placeWords() {
     let counter = 0;
     const { size, words, cells } = this;
-    const horizontalWordsAmont = ~~(words.length / 2);
+    const horizontalWordsAmont = ~~(words.length / 2) + ~~(Math.random() * 3) - 1;
     for (let i = 0; i < words.length; ++i) {
       const maxDistanceFromEnd = size - words[i].length;
       if (i < horizontalWordsAmont) {
@@ -51,7 +51,7 @@ export default class GameGrid {
         let columnStart = ~~(Math.random() * maxDistanceFromEnd);
         while (!this.checkAvailable('horizontal', row, columnStart, words[i])) {
           ++counter;
-          if (counter > 200) {
+          if (counter > 100) {
             counter = 0;
             cells.map(c => c.char = null);
             this.placeWords();
@@ -68,7 +68,7 @@ export default class GameGrid {
         let column = ~~(Math.random() * size);
         while (!this.checkAvailable('vertical', rowStart, column, words[i])) {
           ++counter;
-          if (counter > 200) {
+          if (counter > 100) {
             counter = 0;
             cells.map(c => c.char = null);
             this.placeWords();

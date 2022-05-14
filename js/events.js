@@ -2,7 +2,7 @@ import states from './states.js';
 import { myList, listElement, canvas, ctx, liveCtx } from './initialize-game.js';
 
 // saves the coordinates of the firt cell touched
-let initialtouchPoint = {x: null, y: null};
+const initialtouchPoint = {x: null, y: null};
 
 // add the event listeners
 const app = document.getElementById('app');

@@ -49,7 +49,8 @@ html, body {
   margin: auto;
   display: flex;
   flex-wrap: wrap;
-  width: 400px;
+  max-width: 400px;
+  min-width: 400px;
   outline: 2px solid rgba(0, 170, 255, 0.3);
   border-radius: 3px;
   outline: 2px solid rgba(255, 0, 128, 0.05);
@@ -121,4 +122,23 @@ canvas {
   top: 0;
   left: 0;
   pointer-events: none;
+}
+
+@media (max-width: 600px) {
+  .wrapper {
+    padding: 0;
+  }
+  .container {
+    flex-direction: column;
+  }
+  .list {
+    margin: 1rem auto;
+    padding: 0;
+    width: 400px;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .list li {
+    margin-right: 0.8rem;
+  }
 }
