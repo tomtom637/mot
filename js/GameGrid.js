@@ -43,10 +43,10 @@ export default class GameGrid {
   placeWords() {
     let counter = 0;
     const { size, words, cells } = this;
-    const horizontalWordsAmont = ~~(words.length / 2) + ~~(Math.random() * 3) - 1;
+    const horizontalWordsAmount = ~~(words.length / 2) + ~~(Math.random() * 3) - 1;
     for (let i = 0; i < words.length; ++i) {
       const maxDistanceFromEnd = size - words[i].length;
-      if (i < horizontalWordsAmont) {
+      if (i < horizontalWordsAmount) {
         let row = ~~(Math.random() * size);
         let columnStart = ~~(Math.random() * maxDistanceFromEnd);
         while (!this.checkAvailable('horizontal', row, columnStart, words[i])) {
@@ -54,14 +54,14 @@ export default class GameGrid {
           if (counter > 100) {
             counter = 0;
             cells.map(c => c.char = null);
-            this.placeWords();
+            return this.placeWords();
           }
           row = ~~(Math.random() * size);
           columnStart = ~~(Math.random() * maxDistanceFromEnd);
         }
         for (let j = 0; j < words[i].length; ++j) {
-          const currentCell = cells.filter(c => c.row === row && c.column === columnStart + j)[0];
-          currentCell.char = words[i][j]
+          const currentCell = cells.find(c => c.row === row && c.column === columnStart + j);
+          currentCell.char = words[i][j];
         }
       } else {
         let rowStart = ~~(Math.random() * maxDistanceFromEnd);
@@ -71,14 +71,14 @@ export default class GameGrid {
           if (counter > 100) {
             counter = 0;
             cells.map(c => c.char = null);
-            this.placeWords();
+            return this.placeWords();
           }
           rowStart = ~~(Math.random() * maxDistanceFromEnd);
           column = ~~(Math.random() * size);
         }
         for (let j = 0; j < words[i].length; ++j) {
-          const currentCell = cells.filter(c => c.row === rowStart + j && c.column === column)[0];
-          currentCell.char = words[i][j]
+          const currentCell = cells.find(c => c.row === rowStart + j && c.column === column);
+          currentCell.char = words[i][j];
         }
       }
     }
