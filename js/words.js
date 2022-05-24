@@ -463,7 +463,6 @@ export const words = [
   "fermer",
   "filer",
   "finir",
-  "foutre",
   "frapper",
   "gagner",
   "garder",
